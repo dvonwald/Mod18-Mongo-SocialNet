@@ -1,0 +1,19 @@
+{
+  "name": "Mod18-Mongo-SocialNet",
+  "version": "1.0.0",
+  "description": "Module 18 Challege Assignment - NoSQL MongoDB, Mongoose, Express",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": ""
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
