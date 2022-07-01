@@ -11,14 +11,14 @@ const thoughtSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    //getter method to format timestamp on query
+    //getter method to format timestamp on query?
   },
   username: {
     type: String,
     required: true,
-    //have to reference the userID here I believe
+    //have to reference the userID here I believe?
   },
-  // reactions: array of nested documents created with the reactionSchema
+  reactions: [reactionSchema],
 });
 
 thoughtSchema.virtual("reactionCount").get(function () {

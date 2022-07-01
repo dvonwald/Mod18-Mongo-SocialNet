@@ -33,3 +33,5 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 };
+
+// Need to add updateUser and the friend stuff: addFriend and removeFriend
