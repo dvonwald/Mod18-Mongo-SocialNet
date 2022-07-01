@@ -13,8 +13,25 @@ const userSchema = new Schema({
     unique: true,
     //must match a valid email address
   },
-  // thoughts: {} array of _id values referencing the Thought model,
-  // friends: {} array of _id values referencing the User model (self-reference)
+  // thoughts: array of _id values referencing the Thought model,
+  thoughts: [
+      {
+        type: Schema.Types.ObjectID,
+        ref: 'thought',
+      }
+  ],
+  // friends: array of _id values referencing the User model (self-reference)
+  friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'friends'
+      }
+  ],
+  {
+      toJSON: {
+          virtuals: true,
+      }
+  }
 });
 
 userSchema.virtual("friendCount").get(function () {
