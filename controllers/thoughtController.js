@@ -9,7 +9,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   postThought(req, res) {
-    // tested working
+    // tested working and adding to user's thoughts array
     Thought.create(req.body)
       .then((thought) => {
         console.log(thought);
@@ -52,5 +52,12 @@ module.exports = {
           : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
+  },
+  updateThought(req, res) {
+    Thought.findOneAndUpdate(
+      console.log(req.body),
+      { _id: req.params.thoughtId },
+      { $set: { thoughtTest: req.body } }
+    );
   },
 };

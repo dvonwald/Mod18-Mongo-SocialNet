@@ -4,6 +4,7 @@ const {
   postThought,
   getSingleThought,
   deleteThought,
+  updateThought,
 } = require("../../controllers/thoughtController");
 
 // /api/thoughts -- get all thoughts or create new thought

@@ -11,6 +11,7 @@ module.exports = {
     console.log(req.params.userId);
     User.findOne({ _id: req.params.userId })
       .populate("thoughts")
+      // .populate("friends")
       .then((user) =>
         !user
           ? res.status(404).json("No user with that userId found")
@@ -40,6 +41,16 @@ module.exports = {
       !friend
         ? res.status(404).json("No friend with that Id found")
         : res.json(`Added a friend to ${friend.username}'s friends list!`)
+    );
+  },
+  removeFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { friends: req.params.friendId } }
+    ).then((friend) =>
+      !friend
+        ? res.status(404).json("No friend with that Id found")
+        : res.json(`Friend removed from friends list.`)
     );
   },
 };
