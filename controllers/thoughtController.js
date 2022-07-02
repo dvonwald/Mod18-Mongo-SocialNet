@@ -53,11 +53,11 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  updateThought(req, res) {
-    Thought.findOneAndUpdate(
-      console.log(req.body),
-      { _id: req.params.thoughtId },
-      { $set: { thoughtTest: req.body } }
-    );
-  },
+  // updateThought(req, res) {
+  //   Thought.findOneAndUpdate(
+  //     console.log(req.body),
+  //     { _id: req.params.thoughtId },
+  //     { $set: { thoughtTest: req.body } }
+  //   );
+  // },
 };
