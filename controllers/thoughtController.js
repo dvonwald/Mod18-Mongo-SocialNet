@@ -1,5 +1,5 @@
 const { Thought, Reaction } = require("../models");
-const { User } = require("../models/User");
+const User = require("../models/User.js");
 
 module.exports = {
   // working
@@ -9,9 +9,10 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   createThought(req, res) {
-    // not working
+    // not working fully - not adding it to the user
     Thought.create(req.body)
       .then((thought) => {
+        console.log(thought);
         return User.findOneAndUpdate(
           { username: req.body.username },
           { $addToSet: { thoughts: thought } },

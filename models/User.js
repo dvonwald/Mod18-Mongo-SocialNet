@@ -17,15 +17,15 @@ const userSchema = new Schema(
     // thoughts: array of _id values referencing the Thought model,
     thoughts: [
       {
-        type: Schema.Types.ObjectID,
-        ref: "thoughts",
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
       },
     ],
     // friends: array of _id values referencing the User model (self-reference)
     friends: [
       {
         type: Schema.Types.ObjectId,
-        ref: "friends",
+        ref: "Friends",
       },
     ],
   },
