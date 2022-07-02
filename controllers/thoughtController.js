@@ -8,8 +8,8 @@ module.exports = {
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
-  createThought(req, res) {
-    // not working fully - not adding it to the user
+  postThought(req, res) {
+    // tested working
     Thought.create(req.body)
       .then((thought) => {
         console.log(thought);
@@ -24,7 +24,7 @@ module.exports = {
           ? res.status(404).json({
               message: "Thought created but no user with that userId found.",
             })
-          : res.json("Thought created")
+          : res.json("Thought posted!")
       )
       .catch((err) => {
         console.log(err);

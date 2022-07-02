@@ -6,7 +6,7 @@ module.exports = {
     User.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
-  }, // Get single user with userId/_Id -- Tested working
+  }, // Get single user with userId/_Id -- Tested working & populating thoughts
   getSingleUser(req, res) {
     console.log(req.params.userId);
     User.findOne({ _id: req.params.userId })
@@ -31,6 +31,16 @@ module.exports = {
           : res.json(`${user.username} has been deleted`)
       )
       .catch((err) => res.status(500).json(err));
+  },
+  addFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $addToSet: { friends: req.params.friendId } }
+    ).then((friend) =>
+      !friend
+        ? res.status(404).json("No friend with that Id found")
+        : res.json(`Added a friend to ${friend.username}'s friends list!`)
+    );
   },
 };
 

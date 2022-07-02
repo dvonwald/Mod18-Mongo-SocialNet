@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const {
   getThoughts,
-  createThought,
+  postThought,
   getSingleThought,
   deleteThought,
 } = require("../../controllers/thoughtController");
 
 // /api/thoughts -- get all thoughts or create new thought
-router.route("/").get(getThoughts).post(createThought);
+router.route("/").get(getThoughts).post(postThought);
 
 // /api/thoughts/:thoughtId -- get single thought or delete or update thought by thoughtId
 router.route("/:thoughtId").get(getSingleThought).delete(deleteThought);
